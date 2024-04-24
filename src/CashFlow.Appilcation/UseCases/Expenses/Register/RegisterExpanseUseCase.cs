@@ -14,27 +14,7 @@ public class RegisterExpanseUseCase
 
     private void Validate(RequestRegisterExpenseJson request)
     {
-        var titleIsEmpty = string.IsNullOrWhiteSpace(request.Title);
-        if (titleIsEmpty)
-        {
-            throw new ArgumentException("Title is required");
-        }
-
-        if (request.Amount <= 0)
-        {
-            throw new ArgumentException("Value must be greater than zero");
-        }
-
-        var result = DateTime.Compare(request.Date, DateTime.UtcNow);
-        if (result > 0)
-        {
-            throw new ArgumentException("Date cannot be greater than the current date");
-        }
-
-        var paymentTypeIsValida = Enum.IsDefined(typeof(PaymentType), request.PaymentType);
-        if (!paymentTypeIsValida)
-        {
-            throw new ArgumentException("Invalid payment type");
-        }
+        var validator = new RegisterExpanseValidator();
+        var result = validator.Validate(request);
     }
 }
