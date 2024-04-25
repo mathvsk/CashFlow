@@ -1,5 +1,4 @@
-﻿using CashFlow.Communication.Enums;
-using CashFlow.Communication.Requests;
+﻿using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 
 namespace CashFlow.Appilcation.UseCases.Expenses.Register;
@@ -16,5 +15,14 @@ public class RegisterExpanseUseCase
     {
         var validator = new RegisterExpanseValidator();
         var result = validator.Validate(request);
+
+        if (result.IsValid)
+        {
+            return;
+        }
+
+        var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+
+        throw new ArgumentException();        
     }
 }
