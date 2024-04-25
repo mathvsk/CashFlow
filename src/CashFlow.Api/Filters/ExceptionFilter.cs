@@ -29,6 +29,13 @@ public class ExceptionFilter : IExceptionFilter
             context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
             context.Result = new ObjectResult(errorsResponse);
         }
+        else
+        {
+            var errorsResponse = new ResponseErrorJson(context.Exception.Message);
+
+            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.Result = new ObjectResult(errorsResponse);
+        }
     }
 
     private void ThrowUnknowError(ExceptionContext context)
