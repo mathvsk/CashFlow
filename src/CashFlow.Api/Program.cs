@@ -1,4 +1,5 @@
 ﻿using CashFlow.Api.Filters;
+using CashFlow.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
 var app = builder.Build();
+
+app.UseMiddleware<CultureMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
