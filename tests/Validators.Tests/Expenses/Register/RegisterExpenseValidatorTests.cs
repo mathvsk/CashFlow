@@ -22,13 +22,16 @@ public class RegisterExpenseValidatorTests
 
     }
 
-    [Fact]
-    public void ErrorTitleEmpty()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("                    ")]
+    public void ErrorTitleEmpty(string title)
     {
         //Arrange
         var validator = new RegisterExpanseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
-        request.Title = string.Empty;
+        request.Title = title;
 
         //Act
         var result = validator.Validate(request);
@@ -36,5 +39,55 @@ public class RegisterExpenseValidatorTests
         //Assert
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TITLE_REQUIRED));
+    }
+
+    [Fact]
+    public void ErrorDateFuture()
+    {
+        //Arrange
+        var validator = new RegisterExpanseValidator();
+        var request = RequestRegisterExpenseJsonBuilder.Build();
+        request.Date = DateTime.UtcNow.AddDays(1);
+
+        //Act
+        var result = validator.Validate(request);
+
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.EXPENSES_CANNOT_FOR_THE_FUTURE));
+    }
+
+    [Fact]
+    public void ErrorPaymentTypeInvalid()
+    {
+        //Arrange
+        var validator = new RegisterExpanseValidator();
+        var request = RequestRegisterExpenseJsonBuilder.Build();
+        request.PaymentType = (CashFlow.Communication.Enums.PaymentType)8;
+
+        //Act
+        var result = validator.Validate(request);
+
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.PAYMENT_TYPE_INVALID));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    public void ErrorAmountInvalid(decimal amount)
+    {
+        //Arrange
+        var validator = new RegisterExpanseValidator();
+        var request = RequestRegisterExpenseJsonBuilder.Build();
+        request.Amount = amount;
+
+        //Act
+        var result = validator.Validate(request);
+
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.AMOUN_MUST_BE_GREATER_THAN_ZERO));
     }
 }
