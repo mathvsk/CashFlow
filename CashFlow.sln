@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Exception", "src\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{21355A91-19D2-40F3-A0D1-B8A594225710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Tests", "tests\Validators.Tests\Validators.Tests.csproj", "{13739942-C3EA-4B43-93B7-F7F30B240402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Tests", "tests\Validators.Tests\Validators.Tests.csproj", "{13739942-C3EA-4B43-93B7-F7F30B240402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{13739942-C3EA-4B43-93B7-F7F30B240402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13739942-C3EA-4B43-93B7-F7F30B240402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13739942-C3EA-4B43-93B7-F7F30B240402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{5CD5B5F2-F216-4F6D-9898-952AFA18A223} = {CBEC13D4-ADF9-49C1-81F0-D5CFBF661DD5}
 		{21355A91-19D2-40F3-A0D1-B8A594225710} = {CBEC13D4-ADF9-49C1-81F0-D5CFBF661DD5}
 		{13739942-C3EA-4B43-93B7-F7F30B240402} = {164FB4F4-A9F2-4DDB-B180-D165CA03CBC0}
+		{37A918C4-1634-4A8F-9C2A-DE00DBDC7CC9} = {164FB4F4-A9F2-4DDB-B180-D165CA03CBC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C880D05B-5A42-4081-AC45-D40C9499630D}
