@@ -1,6 +1,7 @@
 ﻿using CashFlow.Api.Filters;
 using CashFlow.Api.Middleware;
 using CashFlow.Infrastructure;
+using CashFlow.Appilcation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 builder.Services.AddInfrastructure();
+builder.Services.AddApplication();
 
 // Colocar rotas em min�sculo
 builder.Services.AddRouting(option => option.LowercaseUrls = true);
