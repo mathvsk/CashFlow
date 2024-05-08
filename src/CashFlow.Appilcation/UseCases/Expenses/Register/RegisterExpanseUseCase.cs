@@ -1,6 +1,7 @@
 ﻿using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 using CashFlow.Domain.Entities;
+using CashFlow.Domain.Repositories;
 using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Exception.ExceptionsBase;
 
@@ -9,9 +10,11 @@ namespace CashFlow.Appilcation.UseCases.Expenses.Register;
 public class RegisterExpanseUseCase : IRegisterExpanseUseCase
 {
     private readonly IExpensesRepository _repository;
-    public RegisterExpanseUseCase(IExpensesRepository repository)
+    private readonly IUnitOfWork _unitOfWork;
+    public RegisterExpanseUseCase(IExpensesRepository repository, IUnitOfWork unitOfWork)
     {
         this._repository = repository;
+        this._unitOfWork = unitOfWork;
     }
 
     public ResponseRegisterExpenseJson Execute(RequestRegisterExpenseJson request)
@@ -28,6 +31,7 @@ public class RegisterExpanseUseCase : IRegisterExpanseUseCase
         };
 
         this._repository.Add(entity);
+        this._unitOfWork.Commit();
 
         return new ResponseRegisterExpenseJson();
     }
