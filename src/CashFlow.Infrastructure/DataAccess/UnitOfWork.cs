@@ -10,5 +10,5 @@ internal class UnitOfWork : IUnitOfWork
         this._dbContext = dbContext;
     }
 
-    public void Commit() => this._dbContext.SaveChanges();
+    public async Task Commit() => await this._dbContext.SaveChangesAsync();
 }

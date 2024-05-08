@@ -17,7 +17,7 @@ public class RegisterExpanseUseCase : IRegisterExpanseUseCase
         this._unitOfWork = unitOfWork;
     }
 
-    public ResponseRegisterExpenseJson Execute(RequestRegisterExpenseJson request)
+    public async Task<ResponseRegisterExpenseJson> Execute(RequestRegisterExpenseJson request)
     {
         Validate(request);
 
@@ -30,8 +30,8 @@ public class RegisterExpanseUseCase : IRegisterExpanseUseCase
             Payment_Type = (Domain.Enums.PaymentType)request.PaymentType
         };
 
-        this._repository.Add(entity);
-        this._unitOfWork.Commit();
+        await this._repository.Add(entity);
+        await this._unitOfWork.Commit();
 
         return new ResponseRegisterExpenseJson();
     }
