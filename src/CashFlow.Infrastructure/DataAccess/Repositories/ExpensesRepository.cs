@@ -2,7 +2,7 @@
 using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Infrastructure.DataAccess;
 
-namespace CashFlow.Infrastructure.Repositories;
+namespace CashFlow.Infrastructure.DataAccess.Repositories;
 
 internal class ExpensesRepository : IExpensesRepository
 {
