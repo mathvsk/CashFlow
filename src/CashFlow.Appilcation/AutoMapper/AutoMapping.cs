@@ -15,7 +15,7 @@ public class AutoMapping : Profile
 
     private void RequestToEntity()
     {
-        CreateMap<RequestRegisterExpenseJson, Expense>()
+        CreateMap<RequestExpenseJson, Expense>()
             .ForMember(dest => dest.Payment_Type, config => config.MapFrom(source => source.PaymentType));
     }
 

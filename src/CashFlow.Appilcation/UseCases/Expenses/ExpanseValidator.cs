@@ -2,11 +2,11 @@
 using CashFlow.Exception;
 using FluentValidation;
 
-namespace CashFlow.Appilcation.UseCases.Expenses.Register;
+namespace CashFlow.Appilcation.UseCases.Expenses;
 
-public class RegisterExpanseValidator : AbstractValidator<RequestRegisterExpenseJson>
+public class ExpanseValidator : AbstractValidator<RequestExpenseJson>
 {
-    public RegisterExpanseValidator()
+    public ExpanseValidator()
     {
         RuleFor(expanse => expanse.Title)
             .NotEmpty().WithMessage(ResourceErrorMessages.TITLE_REQUIRED);
