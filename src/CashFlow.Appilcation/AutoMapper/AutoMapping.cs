@@ -23,5 +23,7 @@ public class AutoMapping : Profile
     {
         CreateMap<Expense, ResponseRegisterExpenseJson>();
         CreateMap<Expense, ResponseShortExpenseJson>();
+        CreateMap<Expense, ResponseExpenseJson>()
+            .ForMember(dest => dest.PaymentType, config => config.MapFrom(source => source.Payment_Type)); ;
     }
 }
