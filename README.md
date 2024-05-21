@@ -6,7 +6,7 @@
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/MIT-maker?style=for-the-badge&label=License&labelColor=%23303030&color=%23808080)
 
-CashFlow é uma API (CRUD) referente a despesas financeiras, desenvolvida em C#/.Net, aplicando conceitos de DDD, SOLID e CleanCode.
+CashFlow é uma API (CRUD) com persistência de dados voltada para a gestão de despesas financeiras, desenvolvida em C#/.NET. Ela aplica os conceitos de DDD (Domain-Driven Design), SOLID e Clean Code.
 
 ## Como usar
 Faça um clone do projeto.
